@@ -332,3 +332,10 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+
+#NN weights, unnessesery pickles and archives
+*.h5
+*.rar
+*.zip
+/Python/**/*.pickle
