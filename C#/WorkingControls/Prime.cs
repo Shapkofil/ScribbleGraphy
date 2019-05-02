@@ -32,10 +32,12 @@ namespace WorkingControls
         public Prime()
         {
             InitializeComponent();
-            SplashPaint(Controls);
+            SplashPaint(Controls);      //Adds colour to controls
+
+            practiceToolStripMenuItem.Click += practiceToolStripMenuItem_Click;
         }
 
-
+        //Events for Colouring
         private void SplashPaint(Control.ControlCollection controls)
         {
             foreach(Control c in controls)
@@ -50,25 +52,25 @@ namespace WorkingControls
         {
             object tag = c.Tag;
             string keyword;
-            if (tag is string)
+            if (tag is string)                  //checks if c has a tag, only tagged controls must be changed
             {
                 keyword = tag as string;
             }
             else
             {
-                return c.BackColor;
+                return c.BackColor;             //the control doesn't have a tag, so leaving it without change
             }
             try
             {
-                return scheme[tagmeaning[keyword]];
+                return scheme[tagmeaning[keyword]];     //changes the colour of c
             }
             catch(Exception e)
             {
-                return c.BackColor;
+                return c.BackColor;                     //in case anything goes wrong, returns c unchanged
             }
         }
 
-
+        //Events for Titlebar
         private void windowBar_MouseDown(object sender, MouseEventArgs e)
         {
             initClick = e.Location;
@@ -91,20 +93,59 @@ namespace WorkingControls
             return new Point(rawClick.X - initClick.X, rawClick.Y - initClick.Y);
         }
 
-        private void showSidePanelToolStripMenuItem_Click(object sender, EventArgs e)
+
+        [STAThread]
+        //Tool Strip Items from Menu Bar
+        private void practiceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (showSidePanelToolStripMenuItem.Checked == true)
-                treeView1.Visible = true;
-            else if (showSidePanelToolStripMenuItem.Checked == false)
-                treeView1.Visible = false;
+            GalleryWindow f = new GalleryWindow();
+            f.Show();
+            f.Focus();
+
+            f.label1.Text = "Choose a character:";
+
+            var main = Application.OpenForms.OfType<FreeWritingWindow>().First();
+            main.activity = 1;
         }
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void templateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.modelReader.process.Kill();
+            GalleryWindow f = new GalleryWindow();
+            f.Show();
+            f.Focus();
+
+            f.label1.Text = "Choose a character:";
+
+            var main = Application.OpenForms.OfType<FreeWritingWindow>().First();
+            main.activity = 2;
+        }
+        private void allCharactersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GalleryWindow f = new GalleryWindow();
+            f.Show();
+            f.Focus();
+        }
+        private void myCharactersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GalleryWindow f = new GalleryWindow();
+            f.Show();
+            f.Focus();
+
+            f.path = @"My_characters";
+            f.CharactersButton.Text = "My Characters";
+
+            f.fillTheComboBox();
+            f.path2 = f.path + @"\" + f.comboBox1.SelectedItem.ToString();
+            f.fillTheDisplays();
+        }
+        private void openAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GalleryWindow f = new GalleryWindow();
+            f.Show();
+            f.Focus();
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(Application.OpenForms.Count==1)
+            if (Application.OpenForms.Count == 1)
             {
                 System.Environment.Exit(1);
             }
@@ -114,39 +155,65 @@ namespace WorkingControls
                 Close();
             }
         }
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (e.Node.Text != "Free Writing")
+            //Program.modelReader.process.Kill();
+        }
+        private void showSidePanelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (showSidePanelToolStripMenuItem.Checked == true)
+                treeView1.Visible = true;
+            else if (showSidePanelToolStripMenuItem.Checked == false)
+                treeView1.Visible = false;
+        }
+
+        //Events for Side Panel
+        private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
+        {
+            switch (treeView1.SelectedNode.Text)
             {
-                Prime f = new Prime();
-                f.ShowDialog();
-               f.Focus();
+                case "Practice":
+                    GalleryWindow f = new GalleryWindow();
+                    f.Show(this);
+                    f.Focus();
+                    f.label1.Text = "Choose a character:";
+
+                    var main = Application.OpenForms.OfType<FreeWritingWindow>().First();
+                    main.activity = 1;
+                    break;
+
+                case "Template Writing":
+                    f = new GalleryWindow();
+                    f.Show(this);
+                    f.Focus();
+                    f.label1.Text = "Choose a character:";
+
+                    var main1 = Application.OpenForms.OfType<FreeWritingWindow>().First();
+                    main1.activity = 2;
+                    break;
+
+                case "All Characters":
+                    f = new GalleryWindow();
+                    f.Show(this);
+                    f.Focus();
+                    break;
+
+                case "My Characters":
+                    f = new GalleryWindow();
+                    f.Show(this);
+                    f.Focus();
+                    f.path = @"My_characters";
+                    f.CharactersButton.Text = "My Characters";
+
+                    f.fillTheComboBox();
+                    f.path2 = f.path + @"\" + f.comboBox1.SelectedItem.ToString();
+                    f.fillTheDisplays();
+                    break;
             }
+
         }
 
 
-        [STAThread]
-        private void openAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            GalleryWindow f = new GalleryWindow();
-            f.Show();
-            f.Focus();
-        }
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        public void openFreeWritingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            GalleryWindow f = new GalleryWindow();
-            f.Show();
-            f.Focus();
-        }
-
-        private void GameDemoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+

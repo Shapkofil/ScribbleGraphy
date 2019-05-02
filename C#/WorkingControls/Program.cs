@@ -16,6 +16,9 @@ namespace WorkingControls
         public static ModelReader modelReader;
         public static FreeWritingWindow f;
         public static GalleryWindow f2;
+
+        public static int activity;
+
         [STAThread]
         static void Main()
         {
@@ -28,9 +31,9 @@ namespace WorkingControls
                 "/images_background");
 
             f = new FreeWritingWindow();
-            
             Application.Run(f);
-            
+
+
         }
     }
 }

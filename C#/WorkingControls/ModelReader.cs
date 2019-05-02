@@ -49,16 +49,16 @@ namespace WorkingControls
             start.RedirectStandardInput = true;
             start.CreateNoWindow = true;
             Debug.Print("Loading...");
+            Thread.Sleep(1000);
 
-            process = Process.Start(start);
-            process.WaitForExit();
+            //process = Process.Start(start);
+            //process.WaitForExit();
         }
 
         protected virtual void OnSoftmaxFire(Process process,string stream)
         {
            // Debug.Print("loaded3");
-
-            if (SoftmaxFire != null && stream!=null)
+            if (SoftmaxFire != null)
             {
                 //  Debug.Print("loaded3.5");
                 string[] args = stream.Split('#');
@@ -71,11 +71,6 @@ namespace WorkingControls
             }
         }
         public void GiveTask(int index)
-        {
-            Thread t = new Thread(() => GiveTaskPrime(index));
-            t.Start();
-        }
-        public void GiveTaskPrime(int index)
         {
             if(index == -1)
             {
