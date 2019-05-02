@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DrawableContainer = new System.Windows.Forms.Panel();
+            this.Mgdemo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PredictionDisplay)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -52,7 +53,7 @@
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(38, 307);
+            this.button1.Location = new System.Drawing.Point(38, 289);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(199, 71);
@@ -80,7 +81,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(38, 386);
+            this.button2.Location = new System.Drawing.Point(38, 368);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(199, 82);
@@ -163,6 +164,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.Mgdemo);
             this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.simbolLabel);
             this.panel2.Controls.Add(this.button1);
@@ -182,6 +184,16 @@
             this.DrawableContainer.Name = "DrawableContainer";
             this.DrawableContainer.Size = new System.Drawing.Size(580, 528);
             this.DrawableContainer.TabIndex = 16;
+            // 
+            // Mgdemo
+            // 
+            this.Mgdemo.Location = new System.Drawing.Point(60, 458);
+            this.Mgdemo.Name = "Mgdemo";
+            this.Mgdemo.Size = new System.Drawing.Size(177, 48);
+            this.Mgdemo.TabIndex = 7;
+            this.Mgdemo.Text = "MGDEMO";
+            this.Mgdemo.UseVisualStyleBackColor = true;
+            this.Mgdemo.Click += new System.EventHandler(this.Mgdemo_Click);
             // 
             // FreeWritingWindow
             // 
@@ -225,6 +237,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel DrawableContainer;
+        private System.Windows.Forms.Button Mgdemo;
     }
 }
 

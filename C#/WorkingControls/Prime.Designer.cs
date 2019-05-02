@@ -48,9 +48,11 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFreeWritingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openGalleryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.openGalleryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mGEXPOToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gameDemoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +64,8 @@
             this.editToolStripMenuItem,
             this.toolsToolStripMenuItem,
             this.helpToolStripMenuItem,
-            this.helpToolStripMenuItem1});
+            this.helpToolStripMenuItem1,
+            this.mGEXPOToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
@@ -83,7 +86,7 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -137,6 +140,13 @@
             this.openFreeWritingToolStripMenuItem.Size = new System.Drawing.Size(205, 26);
             this.openFreeWritingToolStripMenuItem.Text = "Open Free Writing";
             // 
+            // openGalleryToolStripMenuItem
+            // 
+            this.openGalleryToolStripMenuItem.Name = "openGalleryToolStripMenuItem";
+            this.openGalleryToolStripMenuItem.Size = new System.Drawing.Size(205, 26);
+            this.openGalleryToolStripMenuItem.Text = "Open Gallery";
+            this.openGalleryToolStripMenuItem.Click += new System.EventHandler(this.openAllToolStripMenuItem_Click);
+            // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
@@ -150,7 +160,7 @@
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeView1.Location = new System.Drawing.Point(0, 28);
-            this.treeView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(4);
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "Node1";
             treeNode1.Text = "Free Writing";
@@ -172,12 +182,20 @@
             this.treeView1.TabIndex = 7;
             this.treeView1.Tag = "utils";
             // 
-            // openGalleryToolStripMenuItem
+            // mGEXPOToolStripMenuItem
             // 
-            this.openGalleryToolStripMenuItem.Name = "openGalleryToolStripMenuItem";
-            this.openGalleryToolStripMenuItem.Size = new System.Drawing.Size(205, 26);
-            this.openGalleryToolStripMenuItem.Text = "Open Gallery";
-            this.openGalleryToolStripMenuItem.Click += new System.EventHandler(this.openAllToolStripMenuItem_Click);
+            this.mGEXPOToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gameDemoToolStripMenuItem});
+            this.mGEXPOToolStripMenuItem.Name = "mGEXPOToolStripMenuItem";
+            this.mGEXPOToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
+            this.mGEXPOToolStripMenuItem.Text = "MGEXPO";
+            // 
+            // gameDemoToolStripMenuItem
+            // 
+            this.gameDemoToolStripMenuItem.Name = "gameDemoToolStripMenuItem";
+            this.gameDemoToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.gameDemoToolStripMenuItem.Text = "GameDemo";
+            this.gameDemoToolStripMenuItem.Click += new System.EventHandler(this.GameDemoToolStripMenuItem_Click);
             // 
             // Prime
             // 
@@ -210,5 +228,7 @@
         private System.Windows.Forms.ToolStripMenuItem openFreeWritingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem openGalleryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mGEXPOToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gameDemoToolStripMenuItem;
     }
 }

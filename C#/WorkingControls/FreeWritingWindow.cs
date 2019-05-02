@@ -22,7 +22,9 @@ namespace WorkingControls
         List<string> updatableWritingSystems = new List<string>();
         string path = @"images_background";
         public static string currentWritingSystem = "Alphabet_of_the_Magi";
+        static int currentIndex = -1;
 
+            
         public FreeWritingWindow()
         {
             InitializeComponent();
@@ -78,6 +80,14 @@ namespace WorkingControls
                     VisualExamples.img_dic[currentWritingSystem][Int32.Parse(e.prediction)];
             }
             else ThreadHelperClass.SetText(this, simbolLabel, "Recognizing.......");
+            if (float.Parse(e.acc) > 50 && currentIndex !=-1)
+            {
+                Random rnd = new Random();
+                int ci = rnd.Next(VisualExamples.img_dic[currentWritingSystem].Count - 1);
+                currentIndex = ci;
+                PredictionDisplay.Image = VisualExamples.img_dic[currentWritingSystem][currentIndex];
+            }
+            
         }
 
         private void drawable_Paint(object sender, PaintEventArgs e)
@@ -94,12 +104,14 @@ namespace WorkingControls
 
                 lastPoint = e.Location;
                 drawable.Invalidate();
-                PredictionDisplay.Image = bmp;        
+                if(currentIndex==-1)PredictionDisplay.Image = bmp;        
             }
         }
+
         private void drawable_MouseUp(object sender, MouseEventArgs e)
         {
             bmp.Save("img.png", System.Drawing.Imaging.ImageFormat.Png);
+            Program.modelReader.GiveTask(currentIndex);
         }
         private void drawable_MouseDown(object sender, MouseEventArgs e)
         {
@@ -111,7 +123,7 @@ namespace WorkingControls
             g.Clear(Color.White);
            
             drawable.Invalidate();
-            PredictionDisplay.Image = null;
+            //PredictionDisplay.Image = null;
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -126,7 +138,13 @@ namespace WorkingControls
             bmp.Save(string.Format("Gallery/{0}", filename), System.Drawing.Imaging.ImageFormat.Png);
         }
 
-
+        private void Mgdemo_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            int ci = rnd.Next(VisualExamples.img_dic[currentWritingSystem].Count - 1);
+            currentIndex = ci;
+            PredictionDisplay.Image = VisualExamples.img_dic[currentWritingSystem][currentIndex];
+        }
     }
 }
 

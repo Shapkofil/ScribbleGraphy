@@ -49,36 +49,16 @@ namespace WorkingControls
             start.RedirectStandardInput = true;
             start.CreateNoWindow = true;
             Debug.Print("Loading...");
-            Thread.Sleep(1000);
 
             process = Process.Start(start);
-            using (StreamWriter writer = process.StandardInput)
-            using (StreamReader reader = process.StandardOutput)
-            {
-                bool first = true;
-                while(true)
-                {
-                    writer.WriteLine("img.png " + FreeWritingWindow.currentWritingSystem);
-                    //Console.WriteLine("written: " + input + i);
-
-                    string result = null;
-                   result = reader.ReadLine();
-                    if (first)
-                    {
-                        Debug.Print("Loaded!!");
-                        first = false;
-                    }
-                    OnSoftmaxFire(process, result);
-                    //Console.WriteLine("read: " + result + "\n");
-                    Thread.Sleep(1000);
-                }
-            }
+            process.WaitForExit();
         }
 
         protected virtual void OnSoftmaxFire(Process process,string stream)
         {
            // Debug.Print("loaded3");
-            if (SoftmaxFire != null)
+
+            if (SoftmaxFire != null && stream!=null)
             {
                 //  Debug.Print("loaded3.5");
                 string[] args = stream.Split('#');
@@ -88,6 +68,32 @@ namespace WorkingControls
                // Debug.Print("loaded4.5");
                 e.process = process;
                 SoftmaxFire(this,e);
+            }
+        }
+        public void GiveTask(int index)
+        {
+            Thread t = new Thread(() => GiveTaskPrime(index));
+            t.Start();
+        }
+        public void GiveTaskPrime(int index)
+        {
+            if(index == -1)
+            {
+                process.StandardInput.WriteLine("img.png " + FreeWritingWindow.currentWritingSystem);
+                //Console.WriteLine("written: " + input + i);
+
+                string result = null;
+                result = process.StandardOutput.ReadLine();
+                OnSoftmaxFire(process, result);
+            }
+            else
+            {
+                process.StandardInput.WriteLine("img.png " + FreeWritingWindow.currentWritingSystem +" " + index);
+                //Console.WriteLine("written: " + input + i);
+
+                string result = null;
+                result = process.StandardOutput.ReadLine();
+                OnSoftmaxFire(process, result);
             }
         }
 
