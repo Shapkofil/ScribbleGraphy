@@ -12,24 +12,23 @@ namespace WorkingControls
 {
     public partial class GalleryWindow : WorkingControls.Prime
     {
-
-        string path = @"images_background";
-        string path2 = @"images_background";
+        public string path = @"images_background";                         //Path for Wriring Systems(Used in ComboBox)
+        public string path2 = @"images_background";                             //Path for characters(Used in Segments)
         List<GallerySegment> updatableSegments = new List<GallerySegment>();
         public List<string> updatableWritingSystems = new List<string>();
-
 
         public GalleryWindow()
         {
             InitializeComponent();
             fillTheDisplays();
+            comboBox1.SelectedText = FreeWritingWindow.currentWritingSystem;
             fillTheComboBox();
         }
-
-        
+       
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {            
-            path2 = path + @"\" + comboBox1.SelectedItem.ToString();
+        {
+            FreeWritingWindow.currentWritingSystem = comboBox1.SelectedItem.ToString();
+            path2 = path + @"\" + FreeWritingWindow.currentWritingSystem;
             fillTheDisplays();
         }
 
@@ -60,36 +59,29 @@ namespace WorkingControls
 
             updatableSegments = new List<GallerySegment>();
 
+            int raw_index = 0;
+
             foreach (string characterName in Directory.GetDirectories(path2))
-            {
-                
-                GallerySegment segment = new GallerySegment(characterName, Path.GetFileName(characterName));
+            {            
+                GallerySegment segment = new GallerySegment(characterName, Path.GetFileName(characterName),raw_index);
                 updatableSegments.Add(segment);
                 TrueGallery.Controls.Add(segment);
                 segment.Width = TrueGallery.Width - 50;
+                raw_index++;
                 segment.Location = new Point(segment.Location.X + 25, segment.Location.Y);
             }
-
-            /*
-            string dir = AppDomain.CurrentDomain.BaseDirectory + @"\Gallery";
-            string dir2 = AppDomain.CurrentDomain.BaseDirectory + @"\images";
-            GallerySegment temp = new GallerySegment(dir);
-            TrueGallery.Controls.Add(temp);
-            TrueGallery.Controls.Add(new GallerySegment(dir2));
-            temp.Width = TrueGallery.Width - 25;
-            */
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CharactersButton_Click(object sender, EventArgs e)
         {
-            if (button1.Text == "All Characters")
+            if (CharactersButton.Text == "All Characters")
             {
                 path = @"My_characters";
-                button1.Text = "My Characters";
+                CharactersButton.Text = "My Characters";
             }
-            else if (button1.Text == "My Characters")
+            else if (CharactersButton.Text == "My Characters")
             {
-                button1.Text = "All Characters";
+                CharactersButton.Text = "All Characters";
                 path = @"images_background";
             }
 
@@ -105,16 +97,6 @@ namespace WorkingControls
                 segment.Width = TrueGallery.Width - 50;
                 segment.Location = new Point(segment.Location.X + 25, segment.Location.Y);
             }
-        }
-
-        private void TrueGallery_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void GalleryWindow_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

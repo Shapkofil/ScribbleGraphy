@@ -15,12 +15,15 @@ namespace WorkingControls
         string collectionDir;
         bool trash;
         string imgDir;
+        int raw_index;
 
-        public GallerySegment(string dir, string label)
+        public GallerySegment(string dir, string label,int ri)
         {
             InitializeComponent();
+            raw_index = ri;
             collectionDir = dir;
             RefreshView(dir);
+ 
             label1.Text = label;
         }
         public void RefreshView(string dir)
@@ -30,10 +33,11 @@ namespace WorkingControls
             foreach (string fileName in fileEntries)
             {
                 //Debug.Print(fileName);
-                ImgDisplay temp = new ImgDisplay(fileName);
+                ImgDisplay temp = new ImgDisplay(fileName,raw_index);
                 imgDir = fileName;
                 CatDisplay.Controls.Add(temp);
-                
+
+
 
 
                 //temp.TrashButton.Click += TrashButton_Click;
