@@ -54,9 +54,9 @@
             this.ClearButton.FlatAppearance.BorderSize = 0;
             this.ClearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ClearButton.Location = new System.Drawing.Point(28, 225);
+            this.ClearButton.Location = new System.Drawing.Point(28, 227);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(149, 50);
+            this.ClearButton.Size = new System.Drawing.Size(138, 50);
             this.ClearButton.TabIndex = 2;
             this.ClearButton.Tag = "focus";
             this.ClearButton.Text = "Clear";
@@ -68,7 +68,7 @@
             this.simbolLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.simbolLabel.AutoSize = true;
             this.simbolLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.simbolLabel.Location = new System.Drawing.Point(52, 178);
+            this.simbolLabel.Location = new System.Drawing.Point(46, 178);
             this.simbolLabel.Name = "simbolLabel";
             this.simbolLabel.Size = new System.Drawing.Size(107, 26);
             this.simbolLabel.TabIndex = 3;
@@ -81,9 +81,9 @@
             this.SaveButton.FlatAppearance.BorderSize = 0;
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveButton.Location = new System.Drawing.Point(29, 281);
+            this.SaveButton.Location = new System.Drawing.Point(29, 283);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(149, 50);
+            this.SaveButton.Size = new System.Drawing.Size(138, 50);
             this.SaveButton.TabIndex = 6;
             this.SaveButton.Tag = "focus";
             this.SaveButton.Text = "Save to Gallery";
@@ -95,9 +95,9 @@
             this.drawable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.drawable.BackColor = System.Drawing.Color.Black;
             this.drawable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.drawable.Location = new System.Drawing.Point(18, 9);
+            this.drawable.Location = new System.Drawing.Point(22, 22);
             this.drawable.Name = "drawable";
-            this.drawable.Size = new System.Drawing.Size(384, 416);
+            this.drawable.Size = new System.Drawing.Size(390, 390);
             this.drawable.TabIndex = 0;
             this.drawable.Paint += new System.Windows.Forms.PaintEventHandler(this.drawable_Paint);
             this.drawable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.drawable_MouseDown);
@@ -108,7 +108,7 @@
             // 
             this.PredictionDisplay.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PredictionDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PredictionDisplay.Location = new System.Drawing.Point(28, 9);
+            this.PredictionDisplay.Location = new System.Drawing.Point(22, 9);
             this.PredictionDisplay.Name = "PredictionDisplay";
             this.PredictionDisplay.Size = new System.Drawing.Size(150, 150);
             this.PredictionDisplay.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -185,10 +185,10 @@
             this.panel2.Controls.Add(this.ClearButton);
             this.panel2.Controls.Add(this.PredictionDisplay);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(590, 71);
+            this.panel2.Location = new System.Drawing.Point(601, 71);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(206, 434);
+            this.panel2.Size = new System.Drawing.Size(195, 434);
             this.panel2.TabIndex = 15;
             // 
             // NextButton
@@ -198,9 +198,9 @@
             this.NextButton.FlatAppearance.BorderSize = 0;
             this.NextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.NextButton.Location = new System.Drawing.Point(29, 337);
+            this.NextButton.Location = new System.Drawing.Point(29, 339);
             this.NextButton.Name = "NextButton";
-            this.NextButton.Size = new System.Drawing.Size(149, 50);
+            this.NextButton.Size = new System.Drawing.Size(138, 50);
             this.NextButton.TabIndex = 7;
             this.NextButton.Tag = "focus";
             this.NextButton.Text = "Next Character";
@@ -216,7 +216,7 @@
             this.DrawableContainer.Location = new System.Drawing.Point(167, 71);
             this.DrawableContainer.Margin = new System.Windows.Forms.Padding(2);
             this.DrawableContainer.Name = "DrawableContainer";
-            this.DrawableContainer.Size = new System.Drawing.Size(423, 434);
+            this.DrawableContainer.Size = new System.Drawing.Size(434, 434);
             this.DrawableContainer.TabIndex = 16;
             // 
             // FreeWritingWindow
@@ -256,13 +256,13 @@
         private System.Windows.Forms.Button SaveButton;
         private System.Windows.Forms.Panel drawable;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel DrawableContainer;
         private System.Windows.Forms.Button NextButton;
         private System.Windows.Forms.Button ExitButton;
+        public System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
