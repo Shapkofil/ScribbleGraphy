@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Drawing;
 using System.Data;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+
 
 namespace WorkingControls
 {
@@ -18,13 +20,21 @@ namespace WorkingControls
         public string root { get; set; }
         public string pricetag;
         int raw_index;
+        public string segmentLabel;
+        
 
         public ImgDisplay(string imgPath,int ri)
         {
             InitializeComponent();
             root = imgPath;
             image = new Bitmap(root);
+
             pictureBox1.Image = image;
+
+
+            if (imgPath.Contains("My_characters")) label1.Visible = true;
+            label1.Text = Path.GetFileNameWithoutExtension(imgPath);
+
             raw_index = ri;
         }
 
@@ -36,16 +46,18 @@ namespace WorkingControls
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             var main = Application.OpenForms.OfType<FreeWritingWindow>().First();
+            var main1 = Application.OpenForms.OfType<GalleryWindow>().First();
+
             main.templateImage = image;
 
             if (main.activity == 0) main.activity = 1;
-
-            main.updateScreens();
-            main.Focus();
-
             main.imgindex = raw_index;
 
-            var main1 = Application.OpenForms.OfType<GalleryWindow>().First();
+            main.updateScreens();
+            main.fillTheComboBox();
+            main.comboBox1.SelectedIndex = main1.comboBox1.SelectedIndex;
+            main.clearScreens();
+            main.Focus();           
             main1.Close();
         }
     }

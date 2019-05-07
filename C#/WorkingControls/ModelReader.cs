@@ -49,10 +49,8 @@ namespace WorkingControls
             start.RedirectStandardInput = true;
             start.CreateNoWindow = true;
             Debug.Print("Loading...");
-            Thread.Sleep(1000);
-
-            //process = Process.Start(start);
-            //process.WaitForExit();
+            process = Process.Start(start);
+            process.WaitForExit();
         }
 
         protected virtual void OnSoftmaxFire(Process process,string stream)

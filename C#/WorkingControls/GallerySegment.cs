@@ -47,5 +47,10 @@ namespace WorkingControls
         {
             RefreshView(collectionDir);
         }
+
+        private void CatDisplay_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

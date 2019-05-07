@@ -67,6 +67,12 @@
     <Compile Include="ImgDisplay.Designer.cs">
       <DependentUpon>ImgDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoadingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingDialog.Designer.cs">
+      <DependentUpon>LoadingDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Prime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,8 +88,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\stringData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>stringData.resx</DependentUpon>
+    </Compile>
     <Compile Include="softbrush.cs" />
     <Compile Include="VisualExamples.cs" />
+    <EmbeddedResource Include="FreeWritingWindow.bg-BG.resx">
+      <DependentUpon>FreeWritingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FreeWritingWindow.en-GB.resx">
+      <DependentUpon>FreeWritingWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GallerySegment.resx">
       <DependentUpon>GallerySegment.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImgDisplay.resx">
       <DependentUpon>ImgDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingDialog.resx">
+      <DependentUpon>LoadingDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prime.resx">
       <DependentUpon>Prime.cs</DependentUpon>
@@ -109,6 +129,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Resources\stringData.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>stringData.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

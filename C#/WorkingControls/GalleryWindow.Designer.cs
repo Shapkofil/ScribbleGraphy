@@ -62,7 +62,7 @@
             this.TrueGallery.Margin = new System.Windows.Forms.Padding(2);
             this.TrueGallery.MinimumSize = new System.Drawing.Size(627, 353);
             this.TrueGallery.Name = "TrueGallery";
-            this.TrueGallery.Size = new System.Drawing.Size(746, 478);
+            this.TrueGallery.Size = new System.Drawing.Size(804, 478);
             this.TrueGallery.TabIndex = 10;
             this.TrueGallery.WrapContents = false;
             // 
@@ -96,7 +96,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(167, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(746, 58);
+            this.panel1.Size = new System.Drawing.Size(804, 58);
             this.panel1.TabIndex = 13;
             // 
             // panel2
@@ -105,7 +105,7 @@
             this.panel2.AutoSize = true;
             this.panel2.Controls.Add(this.comboBox1);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(398, 2);
+            this.panel2.Location = new System.Drawing.Point(456, 2);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(348, 54);
@@ -120,7 +120,7 @@
             this.CharactersButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CharactersButton.Location = new System.Drawing.Point(224, 19);
             this.CharactersButton.Name = "CharactersButton";
-            this.CharactersButton.Size = new System.Drawing.Size(106, 27);
+            this.CharactersButton.Size = new System.Drawing.Size(164, 27);
             this.CharactersButton.TabIndex = 13;
             this.CharactersButton.Tag = "focus";
             this.CharactersButton.Text = "All Characters";
@@ -130,7 +130,7 @@
             // GalleryWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(913, 562);
+            this.ClientSize = new System.Drawing.Size(971, 562);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.TrueGallery);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
