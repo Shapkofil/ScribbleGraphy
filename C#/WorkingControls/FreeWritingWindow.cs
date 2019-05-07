@@ -39,6 +39,10 @@ namespace WorkingControls
         public Bitmap templateImage;
         Bitmap hintMask = new Bitmap("hintMask.bmp");
 
+        //Declaring and Initializing variables for Saving 
+        string saveDir;
+        public string resultCharacterName = null;
+
 
 
         //Events for Initializing
@@ -62,6 +66,8 @@ namespace WorkingControls
             
             //Program.modelReader.SoftmaxFire += OnSoftmaxFire;
             updateScreens();
+            fillTheComboBox();
+
         }
         public void updateScreens()
         {
@@ -69,9 +75,9 @@ namespace WorkingControls
             if (activity == 0)
             {
                 label1.Text = "Free Writing";
+                label2.Visible = true;
                 comboBox1.Visible = true;
                 comboBox1.SelectedText = currentWritingSystem;
-                fillTheComboBox();
                 NextButton.Visible = false;
                 ExitButton.Visible = false;
             }
@@ -149,25 +155,18 @@ namespace WorkingControls
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             currentWritingSystem = comboBox1.SelectedItem.ToString();
+            clearScreens();
         }
 
         //Events for Drawing and Predicting
-        public void OnSoftmaxFire(object soruce,cmdEventArgs e)
-        {
-            if (e.prediction != null)
-            {
-                ThreadHelperClass.SetText(this, simbolLabel, "acc= " + e.acc + "%");
-                if(activity==0) PredictionDisplay.Image = 
-                    VisualExamples.img_dic[currentWritingSystem][Int32.Parse(e.prediction)];
-                cp = Int32.Parse(e.prediction);
-                resultCharacter = e.prediction;
-                
-            }
-            else ThreadHelperClass.SetText(this, simbolLabel, "Recognizing.......");
-        }
         private void drawable_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(bmp, Point.Empty);
+        }
+        private void drawable_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = e.Location;
+            SaveButton.Text = "Save to Gallery";
         }
         private void drawable_MouseMove(object sender, MouseEventArgs e)
         {
@@ -192,21 +191,30 @@ namespace WorkingControls
         {
             //Program.modelReader.GiveTask(imgindex);
         }
-        private void drawable_MouseDown(object sender, MouseEventArgs e)
+        public void OnSoftmaxFire(object soruce, cmdEventArgs e)
         {
-            lastPoint = e.Location;
+            if (e.prediction != null)
+            {
+                ThreadHelperClass.SetText(this, simbolLabel, "acc= " + e.acc + "%");
+                if (activity == 0) PredictionDisplay.Image =
+                       VisualExamples.img_dic[currentWritingSystem][Int32.Parse(e.prediction)];
+                cp = Int32.Parse(e.prediction);
+                resultCharacter = e.prediction;
+            }
+            else ThreadHelperClass.SetText(this, simbolLabel, "Recognizing.......");
         }
 
         //Events for Buttons
         private void ExitButton_Click(object sender, EventArgs e)
         {
+            //Resetting Pariable values
             activity = 0;
-            updateScreens();
             imgindex = -1;
-            g.Clear(Color.White);
-            simbolLabel.Text = "Ready!";
-            drawable.Invalidate();
-            PredictionDisplay.Image = null;
+
+            //Resetting Form layout
+            updateScreens();
+            fillTheComboBox();
+            clearScreens();
         }
         private void PredictionDisplay_Click(object sender, EventArgs e)
         {
@@ -225,25 +233,47 @@ namespace WorkingControls
         }
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            if (activity == 2) g.Clear(Color.Transparent);
+            clearScreens();
+        }
+        public void clearScreens()
+        {
+            //Clearing panels
+            if (activity == 2)
+                g.Clear(Color.Transparent);
             else g.Clear(Color.White);
-            simbolLabel.Text = "Ready!";
             drawable.Invalidate();
-            if (activity != 1) PredictionDisplay.Image = null;
+
+            if (activity != 1)
+                PredictionDisplay.Image = null;
+
+            //Fixing labels
+            simbolLabel.Text = "Ready!";
+            SaveButton.Text = "Save to Gallery";
         }
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            string dir = AppDomain.CurrentDomain.BaseDirectory + "/My_Characters/Unidentified/Unidentified";
+            //Setting directories for the image           
+            if (imgindex > -1)
+                resultCharacterName = Path.GetFileName(Directory.GetDirectories(path + @"\" + currentWritingSystem)[imgindex]);
+            else 
+            if (resultCharacter != null)
+                resultCharacterName = Path.GetFileName(Directory.GetDirectories(path + @"\" + currentWritingSystem)[Int32.Parse(resultCharacter)]);
+            else
+                resultCharacterName = @"\Unidentified\";             
 
-            int i = 0;
-            string filename = string.Format("image{0}.png", i);
-            while (Directory.GetFiles(dir, filename).Length != 0)
+            saveDir = AppDomain.CurrentDomain.BaseDirectory + @"My_Characters\" + currentWritingSystem + @"\" + resultCharacterName + @"\";
+            if (!Directory.Exists(saveDir))
+                Directory.CreateDirectory(saveDir);
+
+            //Setting filename of the image
+            saveDir += $"{DateTime.Now.ToString("yyyy-M-dd--HH-mm-ss")}.png";
+
+            //Saving the image
+            if (activity != 2)
             {
-                i++;
-                filename = string.Format("image{0}.png", i);
-            }
-
-            if (activity == 2)
+                bmp.Save(saveDir, System.Drawing.Imaging.ImageFormat.Png);
+            }                   
+            else
             {
                 Bitmap image1 = new Bitmap(bmp.Width, bmp.Height);
                 using (Graphics g1 = Graphics.FromImage(image1))
@@ -251,30 +281,20 @@ namespace WorkingControls
                     g1.Clear(Color.White);
                     g1.DrawImage(bmp, 0, 0);
                 }
-                image1.Save(string.Format("My_Characters/Unidentified/Unidentified/{0}", filename), System.Drawing.Imaging.ImageFormat.Png);
+
+                image1.Save(saveDir, System.Drawing.Imaging.ImageFormat.Png);
             }
-            else
-                bmp.Save(string.Format("My_Characters/Unidentified/Unidentified/{0}", filename), System.Drawing.Imaging.ImageFormat.Png);
+
+            SaveButton.Text = "Saved!";
         }
         private void NextButton_Click(object sender, EventArgs e)
         {
-            if (activity == 1)
-            {
-                GalleryWindow f = new GalleryWindow();
-                f.Show();
-                f.Focus();
+            GalleryWindow f = new GalleryWindow();
+            f.Show();
+            f.Focus();
 
-                f.label1.Text = "Choose a character:";
-            }
-
-            if (activity == 2)
-            {
-                GalleryWindow f = new GalleryWindow();
-                f.Show();
-                f.Focus();
-
-                f.label1.Text = "Choose a character:";
-            }
+            f.label1.Text = "Choose a character:";
+            f.comboBox1.SelectedIndex = comboBox1.SelectedIndex;
         }
     }
 }
