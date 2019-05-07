@@ -39,9 +39,9 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(29, 17);
@@ -50,11 +50,11 @@
             this.label1.Size = new System.Drawing.Size(81, 26);
             this.label1.TabIndex = 9;
             this.label1.Text = "Gallery";
-            // 
+            //
             // TrueGallery
-            // 
-            this.TrueGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            //
+            this.TrueGallery.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TrueGallery.AutoScroll = true;
             this.TrueGallery.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -65,18 +65,18 @@
             this.TrueGallery.Size = new System.Drawing.Size(804, 478);
             this.TrueGallery.TabIndex = 10;
             this.TrueGallery.WrapContents = false;
-            // 
+            //
             // comboBox1
-            // 
+            //
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(128, 19);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(208, 21);
             this.comboBox1.TabIndex = 11;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
+            //
             // label2
-            // 
+            //
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -85,9 +85,9 @@
             this.label2.Size = new System.Drawing.Size(116, 20);
             this.label2.TabIndex = 12;
             this.label2.Text = "Writing system:";
-            // 
+            //
             // panel1
-            // 
+            //
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.Controls.Add(this.panel2);
@@ -98,9 +98,9 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(804, 58);
             this.panel1.TabIndex = 13;
-            // 
+            //
             // panel2
-            // 
+            //
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoSize = true;
             this.panel2.Controls.Add(this.comboBox1);
@@ -110,10 +110,10 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(348, 54);
             this.panel2.TabIndex = 14;
-            // 
+            //
             // CharactersButton
-            // 
-            this.CharactersButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            //
+            this.CharactersButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CharactersButton.FlatAppearance.BorderSize = 0;
             this.CharactersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -126,9 +126,9 @@
             this.CharactersButton.Text = "All Characters";
             this.CharactersButton.UseVisualStyleBackColor = true;
             this.CharactersButton.Click += new System.EventHandler(this.CharactersButton_Click);
-            // 
+            //
             // GalleryWindow
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.ClientSize = new System.Drawing.Size(971, 562);
             this.Controls.Add(this.panel1);

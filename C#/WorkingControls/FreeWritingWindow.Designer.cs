@@ -47,9 +47,9 @@
             this.panel2.SuspendLayout();
             this.DrawableContainer.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // ClearButton
-            // 
+            //
             this.ClearButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ClearButton.FlatAppearance.BorderSize = 0;
             this.ClearButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -62,9 +62,9 @@
             this.ClearButton.Text = "Clear";
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
-            // 
+            //
             // simbolLabel
-            // 
+            //
             this.simbolLabel.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.simbolLabel.AutoSize = true;
             this.simbolLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -74,9 +74,9 @@
             this.simbolLabel.TabIndex = 3;
             this.simbolLabel.Tag = "focus";
             this.simbolLabel.Text = "Loading...";
-            // 
+            //
             // SaveButton
-            // 
+            //
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveButton.FlatAppearance.BorderSize = 0;
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -89,9 +89,9 @@
             this.SaveButton.Text = "Save to Gallery";
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
+            //
             // drawable
-            // 
+            //
             this.drawable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.drawable.BackColor = System.Drawing.Color.Black;
             this.drawable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -103,9 +103,9 @@
             this.drawable.MouseDown += new System.Windows.Forms.MouseEventHandler(this.drawable_MouseDown);
             this.drawable.MouseMove += new System.Windows.Forms.MouseEventHandler(this.drawable_MouseMove);
             this.drawable.MouseUp += new System.Windows.Forms.MouseEventHandler(this.drawable_MouseUp);
-            // 
+            //
             // PredictionDisplay
-            // 
+            //
             this.PredictionDisplay.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PredictionDisplay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PredictionDisplay.Location = new System.Drawing.Point(22, 9);
@@ -115,9 +115,9 @@
             this.PredictionDisplay.TabIndex = 1;
             this.PredictionDisplay.TabStop = false;
             this.PredictionDisplay.Click += new System.EventHandler(this.PredictionDisplay_Click);
-            // 
+            //
             // panel1
-            // 
+            //
             this.panel1.Controls.Add(this.ExitButton);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.label2);
@@ -127,9 +127,9 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(629, 47);
             this.panel1.TabIndex = 14;
-            // 
+            //
             // ExitButton
-            // 
+            //
             this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ExitButton.FlatAppearance.BorderSize = 0;
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -143,9 +143,9 @@
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Visible = false;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
+            //
             // comboBox1
-            // 
+            //
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(408, 17);
@@ -154,9 +154,9 @@
             this.comboBox1.Size = new System.Drawing.Size(208, 21);
             this.comboBox1.TabIndex = 11;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
+            //
             // label2
-            // 
+            //
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -165,9 +165,9 @@
             this.label2.Size = new System.Drawing.Size(116, 20);
             this.label2.TabIndex = 12;
             this.label2.Text = "Writing system:";
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(13, 13);
@@ -176,9 +176,9 @@
             this.label1.Size = new System.Drawing.Size(130, 26);
             this.label1.TabIndex = 9;
             this.label1.Text = "Free Writing";
-            // 
+            //
             // panel2
-            // 
+            //
             this.panel2.Controls.Add(this.NextButton);
             this.panel2.Controls.Add(this.SaveButton);
             this.panel2.Controls.Add(this.simbolLabel);
@@ -190,9 +190,9 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(195, 434);
             this.panel2.TabIndex = 15;
-            // 
+            //
             // NextButton
-            // 
+            //
             this.NextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.NextButton.BackColor = System.Drawing.Color.Transparent;
             this.NextButton.FlatAppearance.BorderSize = 0;
@@ -207,9 +207,9 @@
             this.NextButton.UseVisualStyleBackColor = false;
             this.NextButton.Visible = false;
             this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
-            // 
+            //
             // DrawableContainer
-            // 
+            //
             this.DrawableContainer.BackColor = System.Drawing.Color.DarkGray;
             this.DrawableContainer.Controls.Add(this.drawable);
             this.DrawableContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -218,9 +218,9 @@
             this.DrawableContainer.Name = "DrawableContainer";
             this.DrawableContainer.Size = new System.Drawing.Size(434, 434);
             this.DrawableContainer.TabIndex = 16;
-            // 
+            //
             // FreeWritingWindow
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
@@ -265,4 +265,3 @@
         public System.Windows.Forms.ComboBox comboBox1;
     }
 }
-

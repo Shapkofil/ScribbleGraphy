@@ -17,11 +17,11 @@ namespace WorkingControls
         List<GallerySegment> updatableSegments = new List<GallerySegment>();
         public List<string> updatableWritingSystems = new List<string>();
 
+
         public GalleryWindow()
         {
             InitializeComponent();
             fillTheDisplays();
-            comboBox1.SelectedText = FreeWritingWindow.currentWritingSystem;
             fillTheComboBox();
             comboBox1.SelectedText = FreeWritingWindow.currentWritingSystem;
         }
