@@ -17,12 +17,13 @@ namespace WorkingControls
         List<GallerySegment> updatableSegments = new List<GallerySegment>();
         public List<string> updatableWritingSystems = new List<string>();
 
+
         public GalleryWindow()
         {
             InitializeComponent();
             fillTheDisplays();
-            comboBox1.SelectedText = FreeWritingWindow.currentWritingSystem;
             fillTheComboBox();
+            comboBox1.SelectedText = FreeWritingWindow.currentWritingSystem;
         }
        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,6 +52,9 @@ namespace WorkingControls
 
         public void fillTheDisplays()
         {
+            LoadingDialog.ShowSplashScreen();
+            TrueGallery.Visible = false;
+
 
             foreach (GallerySegment segment in updatableSegments)
             {                
@@ -70,6 +74,10 @@ namespace WorkingControls
                 raw_index++;
                 segment.Location = new Point(segment.Location.X + 25, segment.Location.Y);
             }
+
+
+            TrueGallery.Visible = true;
+            LoadingDialog.CloseForm();
         }
 
         private void CharactersButton_Click(object sender, EventArgs e)

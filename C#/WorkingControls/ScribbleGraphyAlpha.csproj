@@ -67,6 +67,12 @@
     <Compile Include="ImgDisplay.Designer.cs">
       <DependentUpon>ImgDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoadingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingDialog.Designer.cs">
+      <DependentUpon>LoadingDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Prime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImgDisplay.resx">
       <DependentUpon>ImgDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingDialog.resx">
+      <DependentUpon>LoadingDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prime.resx">
       <DependentUpon>Prime.cs</DependentUpon>
