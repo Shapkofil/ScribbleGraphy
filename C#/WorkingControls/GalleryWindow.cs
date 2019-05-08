@@ -12,8 +12,8 @@ namespace WorkingControls
 {
     public partial class GalleryWindow : WorkingControls.Prime
     {
-        public string path = @"images_background";                         //Path for Wriring Systems(Used in ComboBox)
-        public string path2 = @"images_background";                             //Path for characters(Used in Segments)
+        public string path = stringData.BackGroundImgs;                         //Path for Wriring Systems(Used in ComboBox)
+        public string path2 = stringData.BackGroundImgs;                             //Path for characters(Used in Segments)
         List<GallerySegment> updatableSegments = new List<GallerySegment>();
         public List<string> updatableWritingSystems = new List<string>();
 
@@ -84,7 +84,7 @@ namespace WorkingControls
         {
             if (CharactersButton.Text == "All Characters")
             {
-                path = @"My_characters";
+                path = stringData.UserDir;
                 CharactersButton.Text = "My Characters";
             }
             else if (CharactersButton.Text == "My Characters")

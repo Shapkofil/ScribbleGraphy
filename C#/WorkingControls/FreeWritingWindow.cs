@@ -25,7 +25,7 @@ namespace WorkingControls
 
         //Declaring and Initializing variables for Writing Systems
         List<string> updatableWritingSystems = new List<string>();
-        string path = @"images_background";
+        string path = stringData.BackGroundImgs;
         public static string currentWritingSystem;
 
         //Declaring and Initializing variables for Predicting
@@ -43,9 +43,6 @@ namespace WorkingControls
         string saveDir;
         public string resultCharacterName = null;
 
-        //Declaring and Initializing variables for Saving 
-        string saveDir;
-        public string resultCharacterName = null;
 
 
 
@@ -72,6 +69,19 @@ namespace WorkingControls
             updateScreens();
             fillTheComboBox();
 
+        }
+        public void OnSoftmaxFire(object soruce, cmdEventArgs e)
+        {
+            if (e.prediction != null)
+            {
+                ThreadHelperClass.SetText(this, simbolLabel, "acc= " + e.acc + "%");
+                if (activity == 0) PredictionDisplay.Image =
+                       VisualExamples.img_dic[currentWritingSystem][Int32.Parse(e.prediction)];
+                cp = Int32.Parse(e.prediction);
+                resultCharacter = e.prediction;
+
+            }
+            else ThreadHelperClass.SetText(this, simbolLabel, "Recognizing.......");
         }
         public void updateScreens()
         {
@@ -186,7 +196,7 @@ namespace WorkingControls
         }
         private void drawable_MouseUp(object sender, MouseEventArgs e)
         {
-            bmp.Save("img.png", System.Drawing.Imaging.ImageFormat.Png);
+            bmp.Save(stringData.ImgName, System.Drawing.Imaging.ImageFormat.Png);
 
            Thread t = new Thread(GiveTask);
             t.Start();

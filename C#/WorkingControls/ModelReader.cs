@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.Timers;
+using System.Resources;
 
 namespace WorkingControls
 {
@@ -42,7 +43,7 @@ namespace WorkingControls
         {
             ProcessStartInfo start = new ProcessStartInfo();
 
-            start.FileName = @"python";
+            start.FileName = stringData.PythonDir;
             start.Arguments = string.Format("{0} {1}", scriptname,modelName);
             start.UseShellExecute = false;
             start.RedirectStandardOutput = true;
@@ -72,7 +73,7 @@ namespace WorkingControls
         {
             if(index == -1)
             {
-                process.StandardInput.WriteLine("img.png " + FreeWritingWindow.currentWritingSystem);
+                process.StandardInput.WriteLine(stringData.ImgName +" "+ FreeWritingWindow.currentWritingSystem);
                 //Console.WriteLine("written: " + input + i);
 
                 string result = null;
@@ -81,7 +82,7 @@ namespace WorkingControls
             }
             else
             {
-                process.StandardInput.WriteLine("img.png " + FreeWritingWindow.currentWritingSystem +" " + index);
+                process.StandardInput.WriteLine(stringData.ImgName + FreeWritingWindow.currentWritingSystem +" " + index);
                 //Console.WriteLine("written: " + input + i);
 
                 string result = null;

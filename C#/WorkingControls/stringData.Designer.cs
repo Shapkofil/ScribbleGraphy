@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WorkingControls.Resources {
+namespace WorkingControls {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace WorkingControls.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WorkingControls.Resources.stringData", typeof(stringData).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WorkingControls.stringData", typeof(stringData).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,9 +63,36 @@ namespace WorkingControls.Resources {
         /// <summary>
         ///   Looks up a localized string similar to images_background.
         /// </summary>
-        internal static string background_path {
+        internal static string BackGroundImgs {
             get {
-                return ResourceManager.GetString("background_path", resourceCulture);
+                return ResourceManager.GetString("BackGroundImgs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to img.png.
+        /// </summary>
+        internal static string ImgName {
+            get {
+                return ResourceManager.GetString("ImgName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to python.
+        /// </summary>
+        internal static string PythonDir {
+            get {
+                return ResourceManager.GetString("PythonDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My_characters.
+        /// </summary>
+        internal static string UserDir {
+            get {
+                return ResourceManager.GetString("UserDir", resourceCulture);
             }
         }
     }

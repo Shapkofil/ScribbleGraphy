@@ -32,7 +32,7 @@ namespace WorkingControls
             pictureBox1.Image = image;
 
 
-            if (imgPath.Contains("My_characters")) label1.Visible = true;
+            if (imgPath.Contains(stringData.UserDir)) label1.Visible = true;
             label1.Text = Path.GetFileNameWithoutExtension(imgPath);
 
             raw_index = ri;
