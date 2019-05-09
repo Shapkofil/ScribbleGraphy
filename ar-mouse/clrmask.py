@@ -10,9 +10,9 @@ okflag,frame = cap.read()
 
 while okflag:
 	#inverting the image
-	frame = cv2.flip(frame,1)
+	frame = cv2.flip(frame,0)
 	#making track mask
-	track,mask = mc.maskcolor(frame,60,15)
+	track,mask = mc.maskcolor(frame,60,20)
 
 	contours,x,y = mc.Tracktor(mask,frame)
 	#debug window

@@ -16,8 +16,8 @@ namespace WorkingControls
 {
     public partial class GalleryWindow : WorkingControls.Prime
     {
-        public string path = @"images_background";                         //Path for Wriring Systems(Used in ComboBox)
-        public string path2 = @"images_background";                             //Path for characters(Used in Segments)
+        public string path = stringData.BackGroundImgs;                         //Path for Wriring Systems(Used in ComboBox)
+        public string path2 = stringData.BackGroundImgs;                             //Path for characters(Used in Segments)
         List<GallerySegment> updatableSegments = new List<GallerySegment>();
         public List<string> updatableWritingSystems = new List<string>();
 
@@ -31,15 +31,22 @@ namespace WorkingControls
             InitializeComponent();
             fillTheDisplays();
             fillTheComboBox();
+<<<<<<< HEAD
             comboBox1.SelectedText = FreeWritingWindow.currentWritingSystem;
 
             isBulgarian = (label2.Text == "Писменост:");
+=======
+            comboBox1.SelectedIndex = Properties.Settings.Default.currentWSindex;
+>>>>>>> 23e017fecc78ea1afe501226aaacae23f442804f
         }
        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FreeWritingWindow.currentWritingSystem = comboBox1.SelectedItem.ToString();
-            path2 = path + @"\" + FreeWritingWindow.currentWritingSystem;
+            Properties.Settings.Default.currentWS = comboBox1.SelectedItem.ToString();
+            Properties.Settings.Default.Save();
+            path2 = path + @"\" + Properties.Settings.Default.currentWS;
+            Properties.Settings.Default.currentWSindex = comboBox1.SelectedIndex;
+            Properties.Settings.Default.Save();
             fillTheDisplays();
         }
 
@@ -57,7 +64,7 @@ namespace WorkingControls
                 comboBox1.Items.Add(writingSystemName);
             }
 
-            comboBox1.SelectedIndex = 0;
+            
         }
 
         public void fillTheDisplays()
@@ -94,6 +101,7 @@ namespace WorkingControls
         {
             if (isBulgarian)
             {
+<<<<<<< HEAD
                 if (CharactersButton.Text == "Всички Символи")
                 {
                     path = @"My_characters";
@@ -104,6 +112,10 @@ namespace WorkingControls
                     CharactersButton.Text = "Всички Символи";
                     path = @"images_background";
                 }
+=======
+                path = stringData.UserDir;
+                CharactersButton.Text = "My Characters";
+>>>>>>> 23e017fecc78ea1afe501226aaacae23f442804f
             }
             else
             {

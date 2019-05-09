@@ -32,7 +32,7 @@ namespace WorkingControls
             pictureBox1.Image = image;
 
 
-            if (imgPath.Contains("My_characters")) label1.Visible = true;
+            if (imgPath.Contains(stringData.UserDir)) label1.Visible = true;
             label1.Text = Path.GetFileNameWithoutExtension(imgPath);
 
             raw_index = ri;
@@ -50,12 +50,10 @@ namespace WorkingControls
 
             main.templateImage = image;
 
-            if (main.activity == 0) main.activity = 1;
             main.imgindex = raw_index;
 
             main.updateScreens();
             main.fillTheComboBox();
-            main.comboBox1.SelectedIndex = main1.comboBox1.SelectedIndex;
             main.clearScreens();
             main.Focus();           
             main1.Close();

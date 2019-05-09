@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.Timers;
+using System.Resources;
 
 namespace WorkingControls
 {
@@ -42,17 +43,15 @@ namespace WorkingControls
         {
             ProcessStartInfo start = new ProcessStartInfo();
 
-            start.FileName = @"python";
+            start.FileName = stringData.PythonDir;
             start.Arguments = string.Format("{0} {1}", scriptname,modelName);
             start.UseShellExecute = false;
             start.RedirectStandardOutput = true;
             start.RedirectStandardInput = true;
             start.CreateNoWindow = true;
             Debug.Print("Loading...");
-            Thread.Sleep(1000);
-
-            //process = Process.Start(start);
-            //process.WaitForExit();
+            process = Process.Start(start);
+            process.WaitForExit();
         }
 
         protected virtual void OnSoftmaxFire(Process process,string stream)
@@ -60,21 +59,28 @@ namespace WorkingControls
            // Debug.Print("loaded3");
             if (SoftmaxFire != null)
             {
-                //  Debug.Print("loaded3.5");
-                string[] args = stream.Split('#');
-                cmdEventArgs e = new cmdEventArgs();
-                e.prediction = args[0];
-                e.acc = args[1];
-               // Debug.Print("loaded4.5");
-                e.process = process;
-                SoftmaxFire(this,e);
+                try
+                {
+                    //  Debug.Print("loaded3.5");
+                    string[] args = stream.Split('#');
+                    cmdEventArgs e = new cmdEventArgs();
+                    e.prediction = args[0];
+                    e.acc = args[1];
+                    // Debug.Print("loaded4.5");
+                    e.process = process;
+                    SoftmaxFire(this, e);
+                }
+                catch(Exception e)
+                {
+                    Debug.Print(e.Message);
+                }
             }
         }
         public void GiveTask(int index)
         {
             if(index == -1)
             {
-                process.StandardInput.WriteLine("img.png " + FreeWritingWindow.currentWritingSystem);
+                process.StandardInput.WriteLine(stringData.ImgName +" "+ Properties.Settings.Default.currentWS);
                 //Console.WriteLine("written: " + input + i);
 
                 string result = null;
@@ -83,7 +89,7 @@ namespace WorkingControls
             }
             else
             {
-                process.StandardInput.WriteLine("img.png " + FreeWritingWindow.currentWritingSystem +" " + index);
+                process.StandardInput.WriteLine(stringData.ImgName + " " +Properties.Settings.Default.currentWS +" " + index);
                 //Console.WriteLine("written: " + input + i);
 
                 string result = null;

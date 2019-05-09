@@ -5,4 +5,7 @@ def moveMouse(x,y,winh,winw):
 	x = (x*w)/winw
 	y = (y*h)/winh
 	if x>=0 and y>=0:
-		pyautogui.moveTo(x,y)
+		try:
+			pyautogui.moveTo(x,y)
+		except:
+			pass

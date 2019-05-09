@@ -25,6 +25,7 @@ namespace WorkingControls.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+<<<<<<< HEAD
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool isBulgarian {
             get {
@@ -32,6 +33,27 @@ namespace WorkingControls.Properties {
             }
             set {
                 this["isBulgarian"] = value;
+=======
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int currentWSindex {
+            get {
+                return ((int)(this["currentWSindex"]));
+            }
+            set {
+                this["currentWSindex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Chinese")]
+        public string currentWS {
+            get {
+                return ((string)(this["currentWS"]));
+            }
+            set {
+                this["currentWS"] = value;
+>>>>>>> 23e017fecc78ea1afe501226aaacae23f442804f
             }
         }
     }

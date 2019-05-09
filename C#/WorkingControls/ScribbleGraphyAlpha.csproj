@@ -88,12 +88,31 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+<<<<<<< HEAD
     <Compile Include="Settings.cs" />
+=======
+    <Compile Include="SettingsHolder.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>SettingsHolder.settings</DependentUpon>
+    </Compile>
+    <Compile Include="stringData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>stringData.resx</DependentUpon>
+    </Compile>
+>>>>>>> 23e017fecc78ea1afe501226aaacae23f442804f
     <Compile Include="softbrush.cs" />
     <Compile Include="VisualExamples.cs" />
     <EmbeddedResource Include="FreeWritingWindow.bg-BG.resx">
       <DependentUpon>FreeWritingWindow.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
+=======
+    <EmbeddedResource Include="FreeWritingWindow.en-GB.resx">
+      <DependentUpon>FreeWritingWindow.cs</DependentUpon>
+    </EmbeddedResource>
+>>>>>>> 23e017fecc78ea1afe501226aaacae23f442804f
     <EmbeddedResource Include="GallerySegment.resx">
       <DependentUpon>GallerySegment.cs</DependentUpon>
     </EmbeddedResource>
@@ -131,6 +150,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="stringData.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>stringData.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -152,6 +175,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon1.ico" />
+    <None Include="SettingsHolder.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>SettingsHolder.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Resources\Trash_Can-512.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
