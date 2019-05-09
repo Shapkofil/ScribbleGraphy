@@ -12,16 +12,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Timers;
 using System.Threading;
-using System.Globalization;
 using System.Resources;
-using System.Reflection;
-
 
 namespace WorkingControls
 {
     public partial class FreeWritingWindow : Prime
     {
-
         //Declaring and Initializing variables for Drawing
         Bitmap bmp;
         Point lastPoint;
@@ -35,6 +31,7 @@ namespace WorkingControls
         //Declaring and Initializing variables for Predicting
         public Thread taskThread;
         public int imgindex = -1;
+        int cp;
         string resultCharacter = null;
 
         //Declaring and Initializing variables for Activities
@@ -46,21 +43,13 @@ namespace WorkingControls
         string saveDir;
         public string resultCharacterName = null;
 
-        bool isBulgarian;
-
-
 
 
 
         //Events for Initializing
         public FreeWritingWindow()
         {
-            if (isBulgarian)
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo("bg-BG");
-            
             InitializeComponent();
-
-            isBulgarian = (label2.Text == "Писменост:");
 
             typeof(Panel).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.SetProperty
             | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic, null,
@@ -94,19 +83,12 @@ namespace WorkingControls
             }
             else ThreadHelperClass.SetText(this, simbolLabel, "Recognizing.......");
         }
-
-        
-        
-        
         public void updateScreens()
         {
             //Free writing screen
             if (activity == 0)
             {
-                if (isBulgarian)
-                    mainLabel.Text = "Свободно писане";
-                else
-                    mainLabel.Text = "Free Writing";
+                label1.Text = "Free Writing";
                 label2.Visible = true;
                 comboBox1.Visible = true;
                 comboBox1.SelectedText = Properties.Settings.Default.currentWS;
@@ -117,10 +99,7 @@ namespace WorkingControls
             //Practice screen
             if (activity == 1)
             {
-                if (isBulgarian)
-                    mainLabel.Text = "Упражнение";
-                else
-                    mainLabel.Text = "Practice";
+                label1.Text = "Practice";
                 label2.Visible = false;
                 comboBox1.Visible = false;
                 NextButton.Visible = true;
@@ -134,10 +113,7 @@ namespace WorkingControls
             //Template Writing screen
             if (activity == 2)
             {
-                if (isBulgarian)
-                    mainLabel.Text = "Обучение";
-                else
-                    mainLabel.Text = "Template Writing";
+                label1.Text = "Template Writing";
                 label2.Visible = false;
                 comboBox1.Visible = false;
                 NextButton.Visible = true;
@@ -205,10 +181,7 @@ namespace WorkingControls
         private void drawable_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = e.Location;
-            if (isBulgarian)
-                SaveButton.Text = "Запазване в Галерията";
-            else
-                SaveButton.Text = "Save to Gallery";
+            SaveButton.Text = "Save to Gallery";
         }
         private void drawable_MouseMove(object sender, MouseEventArgs e)
         {
@@ -234,6 +207,7 @@ namespace WorkingControls
             Program.modelReader.GiveTask(imgindex);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
         public void OnSoftmaxFire(object soruce, cmdEventArgs e)
         {
@@ -249,6 +223,9 @@ namespace WorkingControls
 >>>>>>> parent of 41be0232... Fixed Template writing
 =======
 >>>>>>> parent of 41be0232... Fixed Template writing
+=======
+            Debug.Print(Properties.Settings.Default.currentWS + " " + imgindex);
+>>>>>>> parent of bc6ac773... Merge branch 'development' of https://github.com/Shapkofil/ScribbleGraphy into development
         }
 
         //Events for Buttons
@@ -276,8 +253,6 @@ namespace WorkingControls
         private void HintDelay()
         {
             Thread.Sleep(1000);                         //Hint period in milliseconds
-
-            if (isBulgarian) hintMask = new Bitmap("hintMaskBG.bmp");
             PredictionDisplay.Image = hintMask;
         }
         private void ClearButton_Click(object sender, EventArgs e)
@@ -296,16 +271,8 @@ namespace WorkingControls
                 PredictionDisplay.Image = null;
 
             //Fixing labels
-            if (isBulgarian)
-                simbolLabel.Text = "Готово!";
-            else
-                simbolLabel.Text = "Ready!";
-
-            if (isBulgarian)
-                SaveButton.Text = "Запазване в Галерията";
-            else
-                SaveButton.Text = "Save to Gallery";
-
+            simbolLabel.Text = "Ready!";
+            SaveButton.Text = "Save to Gallery";
         }
         private void SaveButton_Click(object sender, EventArgs e)
         {
@@ -342,10 +309,7 @@ namespace WorkingControls
                 image1.Save(saveDir, System.Drawing.Imaging.ImageFormat.Png);
             }
 
-            if (isBulgarian)
-                SaveButton.Text = "Запазено!";
-            else
-                SaveButton.Text = "Saved!";
+            SaveButton.Text = "Saved!";
         }
       
         private void NextButton_Click(object sender, EventArgs e)
@@ -354,11 +318,7 @@ namespace WorkingControls
             f.Show();
             f.Focus();
 
-            if (isBulgarian)
-                f.label1.Text = "Изберете символ:";
-            else
-                f.label1.Text = "Choose character:";
-            ;
+            f.label1.Text = "Choose a character:";
             f.comboBox1.SelectedIndex = comboBox1.SelectedIndex;
         }
 
