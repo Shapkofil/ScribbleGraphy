@@ -7,6 +7,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Globalization;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace WorkingControls
 {
@@ -17,13 +21,23 @@ namespace WorkingControls
         List<GallerySegment> updatableSegments = new List<GallerySegment>();
         public List<string> updatableWritingSystems = new List<string>();
 
+        bool isBulgarian;
 
         public GalleryWindow()
         {
+            if (isBulgarian)
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("bg-BG");
+            
             InitializeComponent();
             fillTheDisplays();
             fillTheComboBox();
+<<<<<<< HEAD
+            comboBox1.SelectedText = FreeWritingWindow.currentWritingSystem;
+
+            isBulgarian = (label2.Text == "Писменост:");
+=======
             comboBox1.SelectedIndex = Properties.Settings.Default.currentWSindex;
+>>>>>>> 23e017fecc78ea1afe501226aaacae23f442804f
         }
        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -85,16 +99,38 @@ namespace WorkingControls
 
         private void CharactersButton_Click(object sender, EventArgs e)
         {
-            if (CharactersButton.Text == "All Characters")
+            if (isBulgarian)
             {
+<<<<<<< HEAD
+                if (CharactersButton.Text == "Всички Символи")
+                {
+                    path = @"My_characters";
+                    CharactersButton.Text = "Моите Символи";
+                }
+                else if (CharactersButton.Text == "Моите Символи")
+                {
+                    CharactersButton.Text = "Всички Символи";
+                    path = @"images_background";
+                }
+=======
                 path = stringData.UserDir;
                 CharactersButton.Text = "My Characters";
+>>>>>>> 23e017fecc78ea1afe501226aaacae23f442804f
             }
-            else if (CharactersButton.Text == "My Characters")
+            else
             {
-                CharactersButton.Text = "All Characters";
-                path = @"images_background";
+                if (CharactersButton.Text == "All Characters")
+                {
+                    path = @"My_characters";
+                    CharactersButton.Text = "My Characters";
+                }
+                else if (CharactersButton.Text == "My Characters")
+                {
+                    CharactersButton.Text = "All Characters";
+                    path = @"images_background";
+                }
             }
+
 
             fillTheComboBox();
             path2 = path + @"\" + comboBox1.SelectedItem.ToString();
