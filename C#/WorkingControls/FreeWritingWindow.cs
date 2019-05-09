@@ -109,6 +109,7 @@ namespace WorkingControls
                     mainLabel.Text = "Free Writing";
                 label2.Visible = true;
                 comboBox1.Visible = true;
+                comboBox1.SelectedText = Properties.Settings.Default.currentWS;
                 NextButton.Visible = false;
                 ExitButton.Visible = false;
             }
@@ -223,27 +224,15 @@ namespace WorkingControls
         }
         private void drawable_MouseUp(object sender, MouseEventArgs e)
         {
-            if (activity != 2)
-            {
-                bmp.Save(stringData.ImgName, System.Drawing.Imaging.ImageFormat.Png);
-            }
-            else
-            {
-                Bitmap image1 = new Bitmap(bmp.Width, bmp.Height);
-                using (Graphics g1 = Graphics.FromImage(image1))
-                {
-                    g1.Clear(Color.White);
-                    g1.DrawImage(bmp, 0, 0);
-                }
+            bmp.Save(stringData.ImgName, System.Drawing.Imaging.ImageFormat.Png);
 
-                image1.Save(stringData.ImgName, System.Drawing.Imaging.ImageFormat.Png);
-            }
-            Thread t = new Thread(GiveTask);
+           Thread t = new Thread(GiveTask);
             t.Start();
         }
         private void GiveTask()
         {
             Program.modelReader.GiveTask(imgindex);
+<<<<<<< HEAD
         }
         public void OnSoftmaxFire(object soruce, cmdEventArgs e)
         {
@@ -255,6 +244,8 @@ namespace WorkingControls
                 resultCharacter = e.prediction;
             }
             else ThreadHelperClass.SetText(this, simbolLabel, "Recognizing.......");
+=======
+>>>>>>> parent of 41be0232... Fixed Template writing
         }
 
         //Events for Buttons
