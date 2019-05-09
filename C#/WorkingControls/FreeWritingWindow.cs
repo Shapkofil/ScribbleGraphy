@@ -205,27 +205,7 @@ namespace WorkingControls
         private void GiveTask()
         {
             Program.modelReader.GiveTask(imgindex);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        }
-        public void OnSoftmaxFire(object soruce, cmdEventArgs e)
-        {
-            if (e.prediction != null)
-            {
-                ThreadHelperClass.SetText(this, simbolLabel, "acc= " + e.acc + "%");
-                if (activity == 0) PredictionDisplay.Image =
-                       VisualExamples.img_dic[currentWritingSystem][Int32.Parse(e.prediction)];
-                resultCharacter = e.prediction;
-            }
-            else ThreadHelperClass.SetText(this, simbolLabel, "Recognizing.......");
-=======
->>>>>>> parent of 41be0232... Fixed Template writing
-=======
->>>>>>> parent of 41be0232... Fixed Template writing
-=======
-            Debug.Print(Properties.Settings.Default.currentWS + " " + imgindex);
->>>>>>> parent of bc6ac773... Merge branch 'development' of https://github.com/Shapkofil/ScribbleGraphy into development
+
         }
 
         //Events for Buttons
