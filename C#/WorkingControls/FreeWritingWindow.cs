@@ -233,6 +233,7 @@ namespace WorkingControls
         {
             Program.modelReader.GiveTask(imgindex);
 <<<<<<< HEAD
+<<<<<<< HEAD
         }
         public void OnSoftmaxFire(object soruce, cmdEventArgs e)
         {
@@ -244,6 +245,8 @@ namespace WorkingControls
                 resultCharacter = e.prediction;
             }
             else ThreadHelperClass.SetText(this, simbolLabel, "Recognizing.......");
+=======
+>>>>>>> parent of 41be0232... Fixed Template writing
 =======
 >>>>>>> parent of 41be0232... Fixed Template writing
         }
