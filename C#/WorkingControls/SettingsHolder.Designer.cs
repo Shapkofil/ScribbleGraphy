@@ -8,16 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WorkingControls.Properties {
+namespace WorkingControls {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.0.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+    internal sealed partial class SettingsHolder : global::System.Configuration.ApplicationSettingsBase {
         
-        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+        private static SettingsHolder defaultInstance = ((SettingsHolder)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new SettingsHolder())));
         
-        public static Settings Default {
+        public static SettingsHolder Default {
             get {
                 return defaultInstance;
             }
@@ -25,25 +25,25 @@ namespace WorkingControls.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int currentWSindex {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int CurrentWSindex {
             get {
-                return ((int)(this["currentWSindex"]));
+                return ((int)(this["CurrentWSindex"]));
             }
             set {
-                this["currentWSindex"] = value;
+                this["CurrentWSindex"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Chinese")]
-        public string currentWS {
+        public string CurrentWS {
             get {
-                return ((string)(this["currentWS"]));
+                return ((string)(this["CurrentWS"]));
             }
             set {
-                this["currentWS"] = value;
+                this["CurrentWS"] = value;
             }
         }
     }

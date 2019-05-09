@@ -23,13 +23,16 @@ namespace WorkingControls
             InitializeComponent();
             fillTheDisplays();
             fillTheComboBox();
-            comboBox1.SelectedText = FreeWritingWindow.currentWritingSystem;
+            comboBox1.SelectedIndex = Properties.Settings.Default.currentWSindex;
         }
        
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FreeWritingWindow.currentWritingSystem = comboBox1.SelectedItem.ToString();
-            path2 = path + @"\" + FreeWritingWindow.currentWritingSystem;
+            Properties.Settings.Default.currentWS = comboBox1.SelectedItem.ToString();
+            Properties.Settings.Default.Save();
+            path2 = path + @"\" + Properties.Settings.Default.currentWS;
+            Properties.Settings.Default.currentWSindex = comboBox1.SelectedIndex;
+            Properties.Settings.Default.Save();
             fillTheDisplays();
         }
 
@@ -47,7 +50,7 @@ namespace WorkingControls
                 comboBox1.Items.Add(writingSystemName);
             }
 
-            comboBox1.SelectedIndex = 0;
+            
         }
 
         public void fillTheDisplays()

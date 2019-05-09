@@ -59,21 +59,28 @@ namespace WorkingControls
            // Debug.Print("loaded3");
             if (SoftmaxFire != null)
             {
-                //  Debug.Print("loaded3.5");
-                string[] args = stream.Split('#');
-                cmdEventArgs e = new cmdEventArgs();
-                e.prediction = args[0];
-                e.acc = args[1];
-               // Debug.Print("loaded4.5");
-                e.process = process;
-                SoftmaxFire(this,e);
+                try
+                {
+                    //  Debug.Print("loaded3.5");
+                    string[] args = stream.Split('#');
+                    cmdEventArgs e = new cmdEventArgs();
+                    e.prediction = args[0];
+                    e.acc = args[1];
+                    // Debug.Print("loaded4.5");
+                    e.process = process;
+                    SoftmaxFire(this, e);
+                }
+                catch(Exception e)
+                {
+                    Debug.Print(e.Message);
+                }
             }
         }
         public void GiveTask(int index)
         {
             if(index == -1)
             {
-                process.StandardInput.WriteLine(stringData.ImgName +" "+ FreeWritingWindow.currentWritingSystem);
+                process.StandardInput.WriteLine(stringData.ImgName +" "+ Properties.Settings.Default.currentWS);
                 //Console.WriteLine("written: " + input + i);
 
                 string result = null;
@@ -82,7 +89,7 @@ namespace WorkingControls
             }
             else
             {
-                process.StandardInput.WriteLine(stringData.ImgName + FreeWritingWindow.currentWritingSystem +" " + index);
+                process.StandardInput.WriteLine(stringData.ImgName + " " +Properties.Settings.Default.currentWS +" " + index);
                 //Console.WriteLine("written: " + input + i);
 
                 string result = null;

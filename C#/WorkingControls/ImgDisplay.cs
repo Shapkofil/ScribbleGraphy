@@ -50,12 +50,10 @@ namespace WorkingControls
 
             main.templateImage = image;
 
-            if (main.activity == 0) main.activity = 1;
             main.imgindex = raw_index;
 
             main.updateScreens();
             main.fillTheComboBox();
-            main.comboBox1.SelectedIndex = main1.comboBox1.SelectedIndex;
             main.clearScreens();
             main.Focus();           
             main1.Close();

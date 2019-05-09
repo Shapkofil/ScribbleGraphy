@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Timers;
 using System.Threading;
+using System.Resources;
 
 namespace WorkingControls
 {
@@ -26,7 +27,6 @@ namespace WorkingControls
         //Declaring and Initializing variables for Writing Systems
         List<string> updatableWritingSystems = new List<string>();
         string path = stringData.BackGroundImgs;
-        public static string currentWritingSystem;
 
         //Declaring and Initializing variables for Predicting
         public Thread taskThread;
@@ -66,9 +66,9 @@ namespace WorkingControls
             g.Clear(Color.White);
             
             Program.modelReader.SoftmaxFire += OnSoftmaxFire;
+
             updateScreens();
             fillTheComboBox();
-
         }
         public void OnSoftmaxFire(object soruce, cmdEventArgs e)
         {
@@ -76,7 +76,7 @@ namespace WorkingControls
             {
                 ThreadHelperClass.SetText(this, simbolLabel, "acc= " + e.acc + "%");
                 if (activity == 0) PredictionDisplay.Image =
-                       VisualExamples.img_dic[currentWritingSystem][Int32.Parse(e.prediction)];
+                       VisualExamples.img_dic[Properties.Settings.Default.currentWS][Int32.Parse(e.prediction)];
                 cp = Int32.Parse(e.prediction);
                 resultCharacter = e.prediction;
 
@@ -91,7 +91,7 @@ namespace WorkingControls
                 label1.Text = "Free Writing";
                 label2.Visible = true;
                 comboBox1.Visible = true;
-                comboBox1.SelectedText = currentWritingSystem;
+                comboBox1.SelectedText = Properties.Settings.Default.currentWS;
                 NextButton.Visible = false;
                 ExitButton.Visible = false;
             }
@@ -163,12 +163,13 @@ namespace WorkingControls
                 comboBox1.Items.Add(writingSystemName);
             }
 
-            comboBox1.SelectedIndex = 0;
-            currentWritingSystem = comboBox1.SelectedItem.ToString();
+            comboBox1.SelectedIndex = Properties.Settings.Default.currentWSindex;
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            currentWritingSystem = comboBox1.SelectedItem.ToString();
+            Properties.Settings.Default.currentWS = comboBox1.SelectedItem.ToString();
+            Properties.Settings.Default.currentWSindex = comboBox1.SelectedIndex;
+            Properties.Settings.Default.Save();
             clearScreens();
         }
 
@@ -256,14 +257,14 @@ namespace WorkingControls
         {
             //Setting directories for the image           
             if (imgindex > -1)
-                resultCharacterName = Path.GetFileName(Directory.GetDirectories(path + @"\" + currentWritingSystem)[imgindex]);
+                resultCharacterName = Path.GetFileName(Directory.GetDirectories(path + @"\" + Properties.Settings.Default.currentWS)[imgindex]);
             else 
             if (resultCharacter != null)
-                resultCharacterName = Path.GetFileName(Directory.GetDirectories(path + @"\" + currentWritingSystem)[Int32.Parse(resultCharacter)]);
+                resultCharacterName = Path.GetFileName(Directory.GetDirectories(path + @"\" + Properties.Settings.Default.currentWS)[Int32.Parse(resultCharacter)]);
             else
                 resultCharacterName = @"\Unidentified\";             
 
-            saveDir = AppDomain.CurrentDomain.BaseDirectory + @"My_Characters\" + currentWritingSystem + @"\" + resultCharacterName + @"\";
+            saveDir = AppDomain.CurrentDomain.BaseDirectory + @"My_Characters\" + Properties.Settings.Default.currentWS + @"\" + resultCharacterName + @"\";
             if (!Directory.Exists(saveDir))
                 Directory.CreateDirectory(saveDir);
 
