@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Globalization;
 
 namespace WorkingControls
 {
@@ -28,13 +29,20 @@ namespace WorkingControls
         };
         private Point initClick;
         public bool isDragging;
+        public bool isBulgarian = WorkingControls.Properties.Settings.Default.isBulgarian;
+
 
         public Prime()
-        {
+        {           
+                if (isBulgarian)
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("bg-BG");
+            
             InitializeComponent();
             SplashPaint(Controls);      //Adds colour to controls
 
             practiceToolStripMenuItem.Click += practiceToolStripMenuItem_Click;
+
+            isBulgarian = (fileToolStripMenuItem.Text == "Файл");
         }
 
         //Events for Colouring
@@ -102,7 +110,10 @@ namespace WorkingControls
             f.Show();
             f.Focus();
 
-            f.label1.Text = "Choose a character:";
+            if (isBulgarian)
+                f.label1.Text = "Изберете символ:";
+            else
+                f.label1.Text = "Choose character:";
 
             var main = Application.OpenForms.OfType<FreeWritingWindow>().First();
             main.activity = 1;
@@ -113,7 +124,10 @@ namespace WorkingControls
             f.Show();
             f.Focus();
 
-            f.label1.Text = "Choose a character:";
+            if (isBulgarian)
+                f.label1.Text = "Изберете символ:";
+            else
+                f.label1.Text = "Choose character:";
 
             var main = Application.OpenForms.OfType<FreeWritingWindow>().First();
             main.activity = 2;
@@ -131,7 +145,10 @@ namespace WorkingControls
             f.Focus();
 
             f.path = @"My_characters";
-            f.CharactersButton.Text = "My Characters";
+            if (isBulgarian)
+                f.CharactersButton.Text = "Моите Символи";
+            else
+                f.CharactersButton.Text = "My Characters";
 
             f.fillTheComboBox();
             f.path2 = f.path + @"\" + f.comboBox1.SelectedItem.ToString();
@@ -145,6 +162,9 @@ namespace WorkingControls
         }
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            WorkingControls.Properties.Settings.Default.isBulgarian = false;
+            WorkingControls.Properties.Settings.Default.Save();
+
             if (Application.OpenForms.Count == 1)
             {
                 System.Environment.Exit(1);
@@ -167,50 +187,111 @@ namespace WorkingControls
                 treeView1.Visible = false;
         }
 
+            //Tool Strip Items For Changing Language
+        private void БългарскиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!isBulgarian)
+            {
+                WorkingControls.Properties.Settings.Default.isBulgarian = true;
+                WorkingControls.Properties.Settings.Default.Save();
+
+                Application.Restart();
+            }
+        }
+        private void EnglishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(isBulgarian)
+            {
+                WorkingControls.Properties.Settings.Default.isBulgarian = false;
+                WorkingControls.Properties.Settings.Default.Save();
+
+                Application.Restart();
+            }           
+        }
+
         //Events for Side Panel
         private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
         {
-            switch (treeView1.SelectedNode.Text)
-            {
-                case "Practice":
-                    GalleryWindow f = new GalleryWindow();
-                    f.Show(this);
-                    f.Focus();
-                    f.label1.Text = "Choose a character:";
+            if (isBulgarian)
+                switch (treeView1.SelectedNode.Text)
+                {
+                    case "Упражнение":
+                        GalleryWindow f = new GalleryWindow();
+                        f.Show(this);
+                        f.Focus();
+                        f.label1.Text = "Изберете символ:";
 
-                    var main = Application.OpenForms.OfType<FreeWritingWindow>().First();
-                    main.activity = 1;
-                    break;
+                        var main = Application.OpenForms.OfType<FreeWritingWindow>().First();
+                        main.activity = 1;
+                        break;
 
-                case "Template Writing":
-                    f = new GalleryWindow();
-                    f.Show(this);
-                    f.Focus();
-                    f.label1.Text = "Choose a character:";
+                    case "Обучение":
+                        f = new GalleryWindow();
+                        f.Show(this);
+                        f.Focus();
+                        f.label1.Text = "Изберете символ:";
 
-                    var main1 = Application.OpenForms.OfType<FreeWritingWindow>().First();
-                    main1.activity = 2;
-                    break;
+                        var main1 = Application.OpenForms.OfType<FreeWritingWindow>().First();
+                        main1.activity = 2;
+                        break;
 
-                case "All Characters":
-                    f = new GalleryWindow();
-                    f.Show(this);
-                    f.Focus();
-                    break;
+                    case "Всички Символи":
+                        f = new GalleryWindow();
+                        f.Show(this);
+                        f.Focus();
+                        break;
 
-                case "My Characters":
-                    f = new GalleryWindow();
-                    f.Show(this);
-                    f.Focus();
-                    f.path = @"My_characters";
-                    f.CharactersButton.Text = "My Characters";
+                    case "Моите Символи":
+                        f = new GalleryWindow();
+                        f.Show(this);
+                        f.Focus();
+                        f.path = @"My_characters";
+                        f.label1.Text = "Изберете символ:";
 
-                    f.fillTheComboBox();
-                    f.path2 = f.path + @"\" + f.comboBox1.SelectedItem.ToString();
-                    f.fillTheDisplays();
-                    break;
-            }
+                        f.fillTheComboBox();
+                        f.path2 = f.path + @"\" + f.comboBox1.SelectedItem.ToString();
+                        f.fillTheDisplays();
+                        break;
+                }
+            else
+                switch (treeView1.SelectedNode.Text)
+                {
+                    case "Practice":
+                        GalleryWindow f = new GalleryWindow();
+                        f.Show(this);
+                        f.Focus();
+                        f.label1.Text = "Choose Character:";
 
+                        var main = Application.OpenForms.OfType<FreeWritingWindow>().First();
+                        main.activity = 1;
+                        break;
+
+                    case "Template Writing":
+                        f = new GalleryWindow();
+                        f.Show(this);
+                        f.Focus();
+                        f.label1.Text = "Choose Character:";
+                        var main1 = Application.OpenForms.OfType<FreeWritingWindow>().First();
+                        main1.activity = 2;
+                        break;
+
+                    case "All Characters":
+                        f = new GalleryWindow();
+                        f.Show(this);
+                        f.Focus();
+                        break;
+
+                    case "My Characters":
+                        f = new GalleryWindow();
+                        f.Show(this);
+                        f.Focus();
+                        f.path = @"My_characters";
+                        f.label1.Text = "Choose Character:";
+                        f.fillTheComboBox();
+                        f.path2 = f.path + @"\" + f.comboBox1.SelectedItem.ToString();
+                        f.fillTheDisplays();
+                        break;
+                }
         }
 
 

@@ -13,13 +13,19 @@ using System.Windows.Forms;
 using System.Timers;
 using System.Threading;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 4bf6b0e9... Stablesorce
 using System.Globalization;
 using System.Resources;
 using System.Reflection;
 
+<<<<<<< HEAD
 =======
 using System.Resources;
 >>>>>>> 23e017fecc78ea1afe501226aaacae23f442804f
+=======
+>>>>>>> parent of 4bf6b0e9... Stablesorce
 
 namespace WorkingControls
 {
@@ -260,7 +266,6 @@ namespace WorkingControls
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
         }
         public void OnSoftmaxFire(object soruce, cmdEventArgs e)
         {
@@ -276,10 +281,13 @@ namespace WorkingControls
 >>>>>>> parent of 41be0232... Fixed Template writing
 =======
 >>>>>>> parent of 41be0232... Fixed Template writing
+<<<<<<< HEAD
 =======
             Debug.Print(Properties.Settings.Default.currentWS + " " + imgindex);
 >>>>>>> parent of bc6ac773... Merge branch 'development' of https://github.com/Shapkofil/ScribbleGraphy into development
 >>>>>>> parent of fbb93619... StableWithOutGhoustCode
+=======
+>>>>>>> parent of 4bf6b0e9... Stablesorce
         }
 
         //Events for Buttons
