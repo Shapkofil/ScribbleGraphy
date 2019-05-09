@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -15,11 +14,6 @@ namespace WorkingControls
     {
         public LoadingDialog()
         {
-            
-            var main = Application.OpenForms.OfType<FreeWritingWindow>().FirstOrDefault();
-            if (main.isBulgarian)
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo("bg-BG");
-            
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
         }

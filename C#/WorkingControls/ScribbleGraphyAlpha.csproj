@@ -88,9 +88,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
-    <Compile Include="Settings.cs" />
-=======
     <Compile Include="SettingsHolder.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -101,23 +98,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>stringData.resx</DependentUpon>
     </Compile>
->>>>>>> 23e017fecc78ea1afe501226aaacae23f442804f
     <Compile Include="softbrush.cs" />
     <Compile Include="VisualExamples.cs" />
     <EmbeddedResource Include="FreeWritingWindow.bg-BG.resx">
       <DependentUpon>FreeWritingWindow.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-=======
     <EmbeddedResource Include="FreeWritingWindow.en-GB.resx">
       <DependentUpon>FreeWritingWindow.cs</DependentUpon>
     </EmbeddedResource>
->>>>>>> 23e017fecc78ea1afe501226aaacae23f442804f
     <EmbeddedResource Include="GallerySegment.resx">
       <DependentUpon>GallerySegment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GalleryWindow.bg-BG.resx">
-      <DependentUpon>GalleryWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GalleryWindow.resx">
       <DependentUpon>GalleryWindow.cs</DependentUpon>
@@ -125,14 +115,8 @@
     <EmbeddedResource Include="ImgDisplay.resx">
       <DependentUpon>ImgDisplay.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoadingDialog.bg-BG.resx">
-      <DependentUpon>LoadingDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LoadingDialog.resx">
       <DependentUpon>LoadingDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Prime.bg-BG.resx">
-      <DependentUpon>Prime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prime.resx">
       <DependentUpon>Prime.cs</DependentUpon>
