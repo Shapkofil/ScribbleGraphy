@@ -91,7 +91,6 @@ namespace WorkingControls
                 label1.Text = "Free Writing";
                 label2.Visible = true;
                 comboBox1.Visible = true;
-                comboBox1.SelectedText = Properties.Settings.Default.currentWS;
                 NextButton.Visible = false;
                 ExitButton.Visible = false;
             }
@@ -197,14 +196,28 @@ namespace WorkingControls
         }
         private void drawable_MouseUp(object sender, MouseEventArgs e)
         {
-            bmp.Save(stringData.ImgName, System.Drawing.Imaging.ImageFormat.Png);
+            if (activity != 2)
+            {
+                bmp.Save(stringData.ImgName, System.Drawing.Imaging.ImageFormat.Png);
+            }
+            else
+            {
+                Bitmap image1 = new Bitmap(bmp.Width, bmp.Height);
+                using (Graphics g1 = Graphics.FromImage(image1))
+                {
+                    g1.Clear(Color.White);
+                    g1.DrawImage(bmp, 0, 0);
+                }
 
-           Thread t = new Thread(GiveTask);
+                image1.Save(stringData.ImgName, System.Drawing.Imaging.ImageFormat.Png);
+            }
+            Thread t = new Thread(GiveTask);
             t.Start();
         }
         private void GiveTask()
         {
             Program.modelReader.GiveTask(imgindex);
+            Debug.Print(Properties.Settings.Default.currentWS + " " + imgindex);
         }
 
         //Events for Buttons
