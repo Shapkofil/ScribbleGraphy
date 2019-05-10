@@ -103,11 +103,11 @@
     <EmbeddedResource Include="FreeWritingWindow.bg-BG.resx">
       <DependentUpon>FreeWritingWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FreeWritingWindow.en-GB.resx">
-      <DependentUpon>FreeWritingWindow.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GallerySegment.resx">
       <DependentUpon>GallerySegment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalleryWindow.bg-BG.resx">
+      <DependentUpon>GalleryWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GalleryWindow.resx">
       <DependentUpon>GalleryWindow.cs</DependentUpon>
@@ -115,8 +115,14 @@
     <EmbeddedResource Include="ImgDisplay.resx">
       <DependentUpon>ImgDisplay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoadingDialog.bg-BG.resx">
+      <DependentUpon>LoadingDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoadingDialog.resx">
       <DependentUpon>LoadingDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Prime.bg-BG.resx">
+      <DependentUpon>Prime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prime.resx">
       <DependentUpon>Prime.cs</DependentUpon>

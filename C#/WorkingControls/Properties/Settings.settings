@@ -7,6 +7,8 @@
     </Setting>
     <Setting Name="currentWS" Type="System.String" Scope="User">
       <Value Profile="(Default)">Chinese</Value>
+    <Setting Name="isBulgarian" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

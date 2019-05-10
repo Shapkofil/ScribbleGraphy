@@ -25,25 +25,13 @@ namespace WorkingControls.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int currentWSindex {
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool isBulgarian {
             get {
-                return ((int)(this["currentWSindex"]));
+                return ((bool)(this["isBulgarian"]));
             }
             set {
-                this["currentWSindex"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Chinese")]
-        public string currentWS {
-            get {
-                return ((string)(this["currentWS"]));
-            }
-            set {
-                this["currentWS"] = value;
+                this["isBulgarian"] = value;
             }
         }
     }

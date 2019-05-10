@@ -46,12 +46,21 @@ namespace WorkingControls
         public string resultCharacterName = null;
 
 
+        //Declaring and Initializing variables for Saving 
+        string saveDir;
+        public string resultCharacterName = null;
 
+        bool isBulgarian;
 
         //Events for Initializing
         public FreeWritingWindow()
         {
+            if (isBulgarian)
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("bg-BG");
+
             InitializeComponent();
+
+            isBulgarian = (label2.Text == "Писменост:");
 
             typeof(Panel).InvokeMember("DoubleBuffered", System.Reflection.BindingFlags.SetProperty
             | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic, null,
@@ -91,7 +100,11 @@ namespace WorkingControls
             //Free writing screen
             if (activity == 0)
             {
-                label1.Text = "Free Writing";
+                
+                if (isBulgarian)
+                    mainLabel.Text = "Свободно писане";
+                else
+                    mainLabel.Text = "Free Writing";
                 label2.Visible = true;
                 comboBox1.Visible = true;
                 comboBox1.SelectedText = Properties.Settings.Default.currentWS;
@@ -102,7 +115,10 @@ namespace WorkingControls
             //Practice screen
             if (activity == 1)
             {
-                label1.Text = "Practice";
+                if (isBulgarian)
+                    mainLabel.Text = "Упражнение";
+                else
+                    mainLabel.Text = "Practice";
                 label2.Visible = false;
                 comboBox1.Visible = false;
                 NextButton.Visible = true;
@@ -116,7 +132,10 @@ namespace WorkingControls
             //Template Writing screen
             if (activity == 2)
             {
-                label1.Text = "Template Writing";
+                if (isBulgarian)
+                    mainLabel.Text = "Обучение";
+                else
+                    mainLabel.Text = "Template Writing";
                 label2.Visible = false;
                 comboBox1.Visible = false;
                 NextButton.Visible = true;
@@ -184,7 +203,11 @@ namespace WorkingControls
         private void drawable_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = e.Location;
-            SaveButton.Text = "Save to Gallery";
+            if (isBulgarian)
+                SaveButton.Text = "Запазване в Галерията";
+            else
+                SaveButton.Text = "Save to Gallery";
+
         }
         private void drawable_MouseMove(object sender, MouseEventArgs e)
         {
@@ -250,6 +273,7 @@ namespace WorkingControls
         private void HintDelay()
         {
             Thread.Sleep(1000);                         //Hint period in milliseconds
+            if (isBulgarian) hintMask = new Bitmap("hintMaskBG.bmp");
             PredictionDisplay.Image = hintMask;
         }
         private void ClearButton_Click(object sender, EventArgs e)
@@ -268,8 +292,15 @@ namespace WorkingControls
                 PredictionDisplay.Image = null;
 
             //Fixing labels
-            simbolLabel.Text = "Ready!";
-            SaveButton.Text = "Save to Gallery";
+            if (isBulgarian)
+                simbolLabel.Text = "Готово!";
+            else
+                simbolLabel.Text = "Ready!";
+
+            if (isBulgarian)
+                SaveButton.Text = "Запазване в Галерията";
+            else
+                SaveButton.Text = "Save to Gallery";
         }
         private void SaveButton_Click(object sender, EventArgs e)
         {
@@ -306,7 +337,10 @@ namespace WorkingControls
                 image1.Save(saveDir, System.Drawing.Imaging.ImageFormat.Png);
             }
 
-            SaveButton.Text = "Saved!";
+            if (isBulgarian)
+                SaveButton.Text = "Запазено!";
+            else
+                SaveButton.Text = "Saved!";
         }
       
         private void NextButton_Click(object sender, EventArgs e)
@@ -315,7 +349,10 @@ namespace WorkingControls
             f.Show();
             f.Focus();
 
-            f.label1.Text = "Choose a character:";
+            if (isBulgarian)
+                f.label1.Text = "Изберете символ:";
+            else
+                f.label1.Text = "Choose character:";
             f.comboBox1.SelectedIndex = comboBox1.SelectedIndex;
         }
 
